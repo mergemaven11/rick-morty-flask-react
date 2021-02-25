@@ -3,10 +3,10 @@ import { Tile, ModalWrapper, UnorderedList, ListItem } from 'carbon-components-r
 
 
 export default function Card() {
-    const [characters, setCharactors] = useState([])
+    const [characters, setCharacters] = useState([])
 
     useEffect(() =>{
-        fetch('/api/v1/characters').then((res) => res.json()).then(res => {setCharactors(res)}) 
+        fetch('/api/v1/characters').then((res) => res.json()).then(res => {setCharacters(res)}) 
     }, [])
 
     return (
@@ -16,11 +16,11 @@ export default function Card() {
                 return (
                     <Tile key={char.id}>
                         <h2> {char.name} </h2>
-                        <img alt="characters" src={char.image} style={{borderRadius: '50%'}}/>
+                        <img alt="characters" src={char.image} style={{borderRadius: '4px'}}/>
                         <ModalWrapper
                              buttonTriggerText="See Details"
                              modalHeading={`${char.name}`}
-                             modalLabel="Information card for:"
+                             modalLabel="Information card"
                              passiveModal
                              danger size='sm'
                         >
