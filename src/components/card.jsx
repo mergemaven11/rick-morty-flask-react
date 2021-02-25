@@ -14,9 +14,11 @@ export default function Card() {
             {characters.map(char  => {
 
                 return (
-                    <Tile key={char.id}>
+                    <Tile key={char.id} style={{borderRadius: '4px', marginTop:'15px'}}>
                         <h2> {char.name} </h2>
-                        <img alt="characters" src={char.image} style={{borderRadius: '4px'}}/>
+                        <img alt="characters" src={char.image} style={{borderRadius: '50%'}}/>
+                        <p style={{borderRadius: '4px'}}> {char.location.name}  </p>
+                    
                         <ModalWrapper
                              buttonTriggerText="See Details"
                              modalHeading={`${char.name}`}
