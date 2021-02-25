@@ -18,8 +18,16 @@ export default function Card() {
 
         img: {
             borderRadius: '4px',
-            border: '1px solid #F4F4F4'
+            border: '1px solid #F4F4F4',
+        },
+        details: {
+            position: 'relative',
+            float: 'right',
+            marginRight: '35px',
+            border: '1px solid #2d6cdf', 
+            padding: '30px'
         }
+
     }
 
     return (
@@ -30,7 +38,8 @@ export default function Card() {
                     <Tile key={char.id} style={{borderRadius: '4px', marginTop:'15px'}}>
                         <h2 style={container.title}> {char.name} </h2>
                         <img alt="characters" src={char.image} style={container.img}/>
-                        <p style={{borderRadius: '4px'}}> {char.location.name}  </p>
+                        <div style={container.details}>
+                        <p style={{borderRadius: '4px'}}> {char.location.name}</p>
                         <UnorderedList>
                             <ListItem>
                                 <p>Status: {char.status}</p>
@@ -38,9 +47,10 @@ export default function Card() {
                                 <p>Gender: {char.gender}</p>
                             </ListItem>
                         </UnorderedList>
+                        </div>
                     
                         <ModalWrapper
-                             buttonTriggerText="See Details"
+                             buttonTriggerText="See Episodes"
                              modalHeading={`${char.name}`}
                              modalLabel="Information card"
                              passiveModal
