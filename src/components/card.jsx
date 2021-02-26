@@ -4,6 +4,7 @@ import { Tile, ModalWrapper, UnorderedList, ListItem } from 'carbon-components-r
 
 export default function Card() {
     const [characters, setCharacters] = useState([])
+    const [episodes, setEpisodes] = useState([])
 
     useEffect(() =>{
         fetch('/api/v1/characters').then((res) => res.json()).then(res => {setCharacters(res)}) 
@@ -11,6 +12,12 @@ export default function Card() {
     // Need to fetch from two separate api endpoints One: Character APi and Two: Episodes within Character Api
 
     const container = {
+        wrapper: {
+            borderRadius: '4px', 
+            marginTop:'15px',
+            marginLeft: '15px',
+            padding: '15'
+        },
         title: {
             textAlign: 'center',
             color: "#2d6cdf"
@@ -24,8 +31,10 @@ export default function Card() {
             position: 'relative',
             float: 'right',
             marginRight: '35px',
+            marginLeft: '35px',
+            marginTop: '35px',
             border: '1px solid #2d6cdf', 
-            padding: '30px'
+            padding: '20px'
         }
 
     }
@@ -35,11 +44,12 @@ export default function Card() {
             {characters.map(char  => {
 
                 return (
-                    <Tile key={char.id} style={{borderRadius: '4px', marginTop:'15px'}}>
+                    <Tile key={char.id} style={container.wrapper}>
                         <h2 style={container.title}> {char.name} </h2>
                         <img alt="characters" src={char.image} style={container.img}/>
                         <div style={container.details}>
-                        <p style={{borderRadius: '4px'}}> {char.location.name}</p>
+                        <h3>Details: </h3><hr />
+                        <p style={{borderRadius: '4px'}}> Location: {char.location.name}</p>
                         <UnorderedList>
                             <ListItem>
                                 <p>Status: {char.status}</p>
